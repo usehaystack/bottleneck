@@ -81,6 +81,7 @@ class RedisDatastore
         return resolve replies
       @connection.__scriptFn__(name) arr...
     .catch (e) =>
+      console.log 'XXXX:', e.message
       if e.message == "SETTINGS_KEY_NOT_FOUND"
         if name == "heartbeat" then @Promise.resolve()
         else

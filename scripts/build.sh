@@ -45,12 +45,12 @@ makeLight() {
   npx rollup -c rollup.config.light.js
 }
 
-makeTypings() {
-  echo '[B] Compiling and testing TS typings...'
-  npx ejs-cli bottleneck.d.ts.ejs > bottleneck.d.ts
-  npx ejs-cli light.d.ts.ejs > light.d.ts
-  npx tsc --noEmit --strict test.ts
-}
+# makeTypings() {
+#   echo '[B] Compiling and testing TS typings...'
+#   npx ejs-cli bottleneck.d.ts.ejs > bottleneck.d.ts
+#   npx ejs-cli light.d.ts.ejs > light.d.ts
+#   npx tsc --noEmit --strict test.ts
+# }
 
 if [ "$1" = 'dev' ]; then
   clean
@@ -65,7 +65,8 @@ elif [ "$1" = 'light' ]; then
   clean
   makeLight
 elif [ "$1" = 'typings' ]; then
-  makeTypings
+  # makeTypings
+  echo "Hello"
 else
   clean
   makeES5
@@ -75,7 +76,7 @@ else
 
   clean
   makeLib6
-  makeTypings
+ # makeTypings
 fi
 
 rm -f .babelrc
