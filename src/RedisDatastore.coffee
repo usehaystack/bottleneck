@@ -81,13 +81,12 @@ class RedisDatastore
         return resolve replies
       @connection.__scriptFn__(name) arr...
     .catch (e) =>
-      console.log 'XXXX:', e.message
-      if e.message == "SETTINGS_KEY_NOT_FOUND"
+      if e.message?.includes "SETTINGS_KEY_NOT_FOUND"
         if name == "heartbeat" then @Promise.resolve()
         else
           @runScript("init", @prepareInitSettings(false))
           .then => @runScript(name, args)
-      else if e.message == "UNKNOWN_CLIENT"
+      else if e.message?.includes == "UNKNOWN_CLIENT"
         @runScript("register_client", [@instance.queued()])
         .then => @runScript(name, args)
       else @Promise.reject e

@@ -3173,8 +3173,8 @@
 	                });
 	                return _this3.connection.__scriptFn__(name).apply(void 0, _toConsumableArray(arr));
 	              })["catch"](function (e) {
-	                console.log('XXXX:', e.message);
-	                if (e.message === "SETTINGS_KEY_NOT_FOUND") {
+	                var ref, ref1;
+	                if ((ref = e.message) != null ? ref.includes("SETTINGS_KEY_NOT_FOUND") : void 0) {
 	                  if (name === "heartbeat") {
 	                    return _this3.Promise.resolve();
 	                  } else {
@@ -3182,7 +3182,7 @@
 	                      return _this3.runScript(name, args);
 	                    });
 	                  }
-	                } else if (e.message === "UNKNOWN_CLIENT") {
+	                } else if (((ref1 = e.message) != null ? ref1.includes : void 0) === "UNKNOWN_CLIENT") {
 	                  return _this3.runScript("register_client", [_this3.instance.queued()]).then(function () {
 	                    return _this3.runScript(name, args);
 	                  });
