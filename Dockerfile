@@ -4,4 +4,4 @@ WORKDIR /app
 
 ADD . .
 
-ENTRYPOINT ["/app/scripts/build.sh"]
+CMD /bin/sh

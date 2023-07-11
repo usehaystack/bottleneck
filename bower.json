@@ -1,7 +1,7 @@
 {
   "name": "@thellimist/bottleneck",
   "main": "bottleneck.js",
-  "version": "2.19.6",
+  "version": "2.19.7",
   "homepage": "https://github.com/usehaystack/bottleneck",
   "authors": ["Haystack <sales@haystack.io>"],
   "description": "Distributed task scheduler and rate limiter",
