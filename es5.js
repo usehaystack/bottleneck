@@ -2723,7 +2723,6 @@
 	    }, {
 	      key: "disconnect",
 	      value: function disconnect() {
-	        var flush = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : true;
 	        var i, k, len, ref;
 	        ref = Object.keys(this.limiters);
 	        for (i = 0, len = ref.length; i < len; i++) {
@@ -2732,8 +2731,8 @@
 	        }
 	        this.limiters = {};
 	        this.terminated = true;
-	        this.client.end(flush);
-	        this.subscriber.end(flush);
+	        this.client.quit();
+	        this.subscriber.quit();
 	        return this.Promise.resolve();
 	      }
 	    }]);

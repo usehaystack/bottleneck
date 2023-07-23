@@ -79,13 +79,13 @@ class RedisConnection
   __scriptFn__: (name) ->
     @client.evalsha.bind(@client)
 
-  disconnect: (flush=true) ->
+  disconnect: () ->
     clearInterval(@limiters[k]._store.heartbeat) for k in Object.keys @limiters
     @limiters = {}
     @terminated = true
 
-    @client.end flush
-    @subscriber.end flush
+    @client.quit()
+    @subscriber.quit()
     @Promise.resolve()
 
 module.exports = RedisConnection
